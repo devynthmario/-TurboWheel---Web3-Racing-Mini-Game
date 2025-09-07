@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurboWheel - Web3 Racing Game</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+        }
+        #gameCanvas {
+            border: 2px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+        }
+        .game-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4">
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-6xl font-bold text-white mb-4">🏎️ TurboWheel</h1>
+            <p class="text-xl text-white/80">Web3 Racing Mini-Game</p>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="game-container mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Wallet Info -->
+                <div class="bg-white/10 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-white mb-2">Wallet</h3>
+                    <div id="walletAddress" class="text-white/80 text-sm">Not Connected</div>
+                    <button id="connectWallet" class="mt-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded transition">
+                        Connect MetaMask
+                    </button>
+                </div>
+
+                <!-- High Scores -->
+                <div class="bg-white/10 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-white mb-2">High Scores</h3>
+                    <div id="highScores" class="text-white/80 text-sm">
+                        <div>1. Loading...</div>
+                    </div>
+                </div>
+
+                <!-- Prize Pool -->
+                <div class="bg-white/10 rounded-lg p-4">
+                    <h3 class="text-lg font-semibold text-white mb-2">Prize Pool</h3>
+                    <div id="prizePool" class="text-white/80 text-sm">
+                        <div>Total: 0 ETH</div>
+                        <div>Top 3 Split: 50% / 30% / 20%</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Area -->
+        <div class="game-container">
+            <div class="text-center mb-4">
+                <div class="flex justify-between items-center mb-4">
+                    <div class="text-white">
+                        <span class="text-lg font-semibold">Score: </span>
+                        <span id="currentScore" class="text-2xl font-bold">0</span>
+                    </div>
+                    <div class="text-white">
+                        <span class="text-lg font-semibold">Best: </span>
+                        <span id="bestScore" class="text-2xl font-bold">0</span>
+                    </div>
+                </div>
+                <div class="text-white/80 mb-4">
+                    <span>Speed Level: </span>
+                    <span id="speedLevel" class="font-semibold">1</span>
+                    <span class="text-sm ml-2">(Every 50 points = +1 level)</span>
+                </div>
+            </div>
+
+            <div class="flex justify-center">
+                <canvas id="gameCanvas" width="800" height="400"></canvas>
+            </div>
+
+            <div class="text-center mt-4">
+                <button id="startGame" class="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition">
+                    Start Game
+                </button>
+                <button id="restartGame" class="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-lg text-lg font-semibold transition ml-4 hidden">
+                    Restart
+                </button>
+            </div>
+
+            <div class="text-center mt-4">
+                <p class="text-white/60 text-sm">Use your mouse to move left and right. Collect coins for points!</p>
+            </div>
+        </div>
+
+        <!-- Game Over Modal -->
+        <div id="gameOverModal" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden">
+            <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+                <h2 class="text-3xl font-bold text-center mb-4">Game Over!</h2>
+                <div class="text-center mb-6">
+                    <p class="text-lg">Final Score: <span id="finalScore" class="font-bold">0</span></p>
+                    <p class="text-sm text-gray-600 mt-2">Your score has been recorded on-chain!</p>
+                </div>
+                <div class="flex gap-4">
+                    <button id="playAgain" class="flex-1 bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded transition">
+                        Play Again
+                    </button>
+                    <button id="closeModal" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded transition">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="./js/main.js"></script>
+</body>
+</html>
