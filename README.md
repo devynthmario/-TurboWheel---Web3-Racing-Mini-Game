@@ -300,16 +300,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Ethereum Foundation**: For the Sepolia testnet
 - **MetaMask**: For Web3 wallet integration
 
-## 📞 Support
-
-- **Issues**: [GitHub Issues](https://github.com/your-username/turbowheel/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/your-username/turbowheel/discussions)
-- **Email**: support@turbowheel.game
-
-## 🎮 Play Now
-
-Ready to race? Visit the live game at: [https://turbowheel.vercel.app](https://turbowheel.vercel.app)
-
----
-
 **Built with ❤️ for the Web3 gaming community**
